@@ -1,0 +1,11 @@
+{
+  "semi": true,
+  "overrides": [
+    {
+      "files": "*.yml",
+      "options": {
+        "tabWidth": 4
+      }
+    }
+  ]
+}

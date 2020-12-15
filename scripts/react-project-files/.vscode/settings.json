@@ -1,0 +1,13 @@
+{
+  //  "compile-hero.scs-output-directory": "~/src",
+  "compile-hero.disable-compile-files-on-did-save-code": true,
+  "liveSassCompile.settings.formats": [
+    {
+      "format": "expanded",
+      "extensionName": ".css",
+      "savePath": "/src"
+    }
+  ],
+  "liveSassCompile.settings.includeItems": ["/src/scss/index.scss"],
+  "eslint.lintTask.enable": true
+}

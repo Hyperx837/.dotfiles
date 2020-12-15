@@ -1,0 +1,18 @@
+#!/usr/bin/python3
+
+import subprocess
+
+output = 'HDMI1 connected' in subprocess.check_output('xrandr', shell=True).decode() 
+if output:
+    subprocess.run('xrandr \
+ --dpi 144 \
+ --output eDP1 --mode 1920x1080 --rate 60 --pos 0x0 \
+ --output HDMI1 --mode 1920x1080 --rate 60 --pos 1920x0 --primary \
+ --output VIRTUAL1 --off', shell=True)
+
+else:
+    subprocess.run('xrandr \
+            --dpi 144 \
+            --output eDP1 --mode 1920x1080 --rate 60 --pos 0x0 --primary\
+            --output VIRTUAL1 --off', shell=True)
+

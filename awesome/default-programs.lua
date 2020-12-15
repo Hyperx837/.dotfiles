@@ -1,0 +1,10 @@
+terminal = "kitty"
+termapps = "kitty" -- "terminator"
+editor = os.getenv("EDITOR") or "code"
+editor_cmd = terminal .. " -e " .. editor
+internet_browser = "firefox-developer-edition"
+mail_reader = "mailspring"
+emacs = "emacs"
+explorer = "thunar"
+mixer = "pavucontrol"
+music_player = "mplayer"

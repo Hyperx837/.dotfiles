@@ -1,0 +1,10 @@
+{
+    "Lua.diagnostics.globals": [
+        "music_player",
+        "awesome",
+        "client"
+    ],
+    "Lua.diagnostics.disable": [
+        "lowercase-global"
+    ]
+}
