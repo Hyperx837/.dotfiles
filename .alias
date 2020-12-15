@@ -4,9 +4,12 @@ alias ka='killall'
 alias mute='pamixer -t'
 alias tor='sudo su - tor tor'
 alias refresh='exec zsh'
+alias cat='bat'
+
+# updating stuff
 alias update-alias='source ~/.alias'
 alias update-packages='yay -Qqe > ~/.dotfiles/packages'
-alias cat='bat'
+alias upsys='yay -Syu'
 
 # files
 alias cp='rsync -Pasuv'
