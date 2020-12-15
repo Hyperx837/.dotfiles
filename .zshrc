@@ -3,15 +3,19 @@ set -o vi
 
 plugins=(git zsh-syntax-highlighting zsh-autosuggestions vi-mode fzf)
 
-[[ ! -f ~/.env  ]] || source ~/.env
+ifexist-source () {
+    [[ -e $1 ]] || source $1
+}
+
+ifexist-source ~/.env
 
 source $ZSH/oh-my-zsh.sh
 source ~/.bash_profile
-[[ ! -f ~/.alias ]] || source ~/.alias
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-[[ ! -f ~/.p10k.zsh ]] || source ~/.docker-alias.sh
-[[ ! -f ~/.prerun.sh ]] || source ~/.prerun.sh
-[  -f ~/.fzf.zsh ] || source ~/.fzf.zsh
+ifexist-source ~/.alias
+ifexist-source ~/.p10k.zsh
+ifexist-source ~/.docker-alias.sh
+ifexist-source ~/.prerun.sh
+ifexist-source ~/.fzf.zsh
 
 source ~/.nvm/nvm.sh
 source ~/.nvm/bash_completion
