@@ -35,7 +35,8 @@ alias add-fonts='mv *.[ot(wo)]tf ~/.local/share/fonts'
 # ls
 alias ls='lsd -F'
 alias lh='ls -ld .?* '
-alias tree='lsd --tree'
+alias tr='lsd --tree -I node_modules -I .git'
+alias tra='tr -Ah'
 
 # network
 alias network='nmcli device wifi'
