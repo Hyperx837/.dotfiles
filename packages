@@ -13,12 +13,14 @@ arch-audit
 arch-install-scripts
 asp
 audacity
+audio-recorder
 autoconf
 automake
 awesome-git
 base
 bashtop
 bat
+bfg
 binutils
 bison
 bitwarden-bin
@@ -108,7 +110,7 @@ linux-lts-headers
 linux-zen
 lolbas
 lolcat
-lsd
+lsd-git
 luit
 m4
 mailspring
@@ -224,7 +226,6 @@ python-zipp
 python-zope-interface
 python2-distutils-extra
 qutebrowser-git
-rambox-bin
 ranger
 redshift
 reflector
@@ -245,6 +246,7 @@ tmux
 toilet
 tor
 tor-browser
+tree
 ttf-nerd-fonts-symbols
 ttf-symbola
 udftools
@@ -286,7 +288,6 @@ xorg-server-devel
 xorg-server-xephyr
 xorg-server-xnest
 xorg-server-xvfb
-xorg-server-xwayland
 xorg-sessreg
 xorg-smproxy
 xorg-x11perf
@@ -315,6 +316,7 @@ xorg-xrefresh
 xorg-xset
 xorg-xsetroot
 xorg-xvinfo
+xorg-xwayland
 xorg-xwd
 xorg-xwininfo
 xorg-xwud
