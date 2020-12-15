@@ -17,7 +17,7 @@ alias rm='rm -rf'
 
 # background jobs (background function defined below)
 alias vlc='background vlc'
-alias qutebrowser='background qutebrowser'
+alias qb='background qutebrowser'
 
 # sudo musts
 alias sysct='sudo systemctl'
