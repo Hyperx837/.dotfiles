@@ -4,7 +4,7 @@ set -o vi
 plugins=(git zsh-syntax-highlighting zsh-autosuggestions vi-mode fzf)
 
 ifexist-source () {
-    [[ -e $1 ]] || source $1
+    [[ -f $1 ]] && source $1
 }
 
 ifexist-source ~/.env
