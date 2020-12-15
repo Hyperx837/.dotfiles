@@ -1,6 +1,7 @@
 # general
 alias search='yay -Ss'
 alias ka='killall'
+alias mute='pamixer -t'
 alias tor='sudo su - tor tor'
 alias refresh='exec zsh'
 alias update-alias='source ~/.alias'
@@ -78,10 +79,6 @@ alias deact='deactivate'
 alias venv='python -m venv'
 
 
-# volume
-alias set-volume='pamixer --set-volume'
-alias mute='pamixer -t'
-alias volume='pamixer --get-volume-human'
 
 # things that requires arguments or one liners can't do
 
@@ -89,6 +86,14 @@ alias volume='pamixer --get-volume-human'
 # find any (almost) github user's email
 find-email () {
     curl -fsSL https://api.github.com/users/$1/events/public | grep email
+}
+
+volume () {
+    if [[ -n $1  ]]; then
+        pamixer --set-volume $1
+    else
+        pamixer --get-volume
+    fi
 }
 
 vim () {
