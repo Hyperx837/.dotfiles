@@ -157,6 +157,13 @@ add-dotfile () {
 
 }
 
+txback () {
+    if [[ $(xbacklight) == "100.000000" ]]; then
+        xbacklight -set 1
+    else
+        xbacklight -set 100
+    fi
+}
 srp-file () {
     CDPATH="~/.srp"
     cp ~/.srp/react-project-files/$1 .
