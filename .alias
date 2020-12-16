@@ -60,8 +60,9 @@ alias nr='npm run'
 alias nb='npm run build'
 
 # yarn
-alias ya='yarn add'
 alias y='yarn'
+alias ya='yarn add'
+alias yag='yarn global add'
 alias yi='yarn install --ignore-optional'
 alias ys='yarn start'
 alias yu='yarn upgrade'
