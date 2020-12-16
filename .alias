@@ -174,8 +174,4 @@ txback () {
         xbacklight -set 100
     fi
 }
-srp-file () {
-    CDPATH="~/.srp"
-    cp ~/.srp/react-project-files/$1 .
-}
 
