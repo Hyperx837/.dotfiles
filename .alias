@@ -41,8 +41,9 @@ alias tra='tr -Ah'
 # network
 alias network='nmcli device wifi'
 alias ne='network'
+alias ner='network rescan && network'
 alias network-restart='sudo systemctl restart NetworkManager'
-alias nc='network connect'
+alias nec='network connect'
 alias my-ip="ifconfig | grep -oE \"([0-9]{1,3}\.){3}[0-9]{1,3}\" | sed -n '3,3p;4q'"
 
 # git
