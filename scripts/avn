@@ -1,0 +1,5 @@
+#!/usr/bin/zsh
+
+vlc ~/Videos/Captures/avn/* --random </dev/null &> /dev/null & 
+disown
+
