@@ -16,8 +16,8 @@ alias cp='rsync -Pasuv'
 alias rm='rm -rf'
 
 # background jobs (background function defined below)
-alias vlc='background vlc'
-alias qb='background qutebrowser'
+alias vlc='bground vlc'
+alias qb='bground qutebrowser'
 
 # sudo musts
 alias sysct='sudo systemctl'
