@@ -36,7 +36,7 @@ awful.keyboard.append_global_keybindings(
             function()
                 awful.spawn("xbacklight -inc 10")
             end,
-            {description = "launch browser", group = "awesome"}
+            {description = "increase brightness", group = "awesome"}
         ),
         awful.key(
             {},
@@ -44,7 +44,7 @@ awful.keyboard.append_global_keybindings(
             function()
                 awful.spawn("xbacklight -dec 10")
             end,
-            {description = "launch browser", group = "awesome"}
+            {description = "decrease brightness", group = "awesome"}
         ),
         awful.key(
             {},
@@ -52,7 +52,7 @@ awful.keyboard.append_global_keybindings(
             function()
                 awful.spawn("pamixer -d 2")
             end,
-            {description = "launch browser", group = "awesome"}
+            {description = "decrease volume", group = "awesome"}
         ),
         awful.key(
             {},
@@ -60,7 +60,7 @@ awful.keyboard.append_global_keybindings(
             function()
                 awful.spawn("pamixer -i 2")
             end,
-            {description = "launch browser", group = "awesome"}
+            {description = "increase volume", group = "awesome"}
         ),
         awful.key(
             {modkey},
