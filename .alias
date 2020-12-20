@@ -6,6 +6,7 @@ alias tor='sudo su - tor tor'
 alias refresh='exec zsh'
 alias cat='bat'
 alias less='bat'
+alias colors='for i in {0..255}; do print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)i}%f " ${${(M)$((i%6)):#3}:+"\n"}; done'
 
 # updating stuff
 alias update-alias='source ~/.alias'
