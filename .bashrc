@@ -1,5 +1,7 @@
 # enable terminal linewrap
 setterm -linewrap on
+source ~/.alias
+alias refresh='source ~/.bashrc'
 
 # colorize man pages
 export LESS_TERMCAP_mb=$'\e[1;32m'
@@ -14,18 +16,12 @@ export LESSHISTFILE=-
 # colorize ls files
 [ -x /usr/bin/dircolors ] && eval "$(dircolors -b)"
 
-# If this is an xterm set the title to user@host:dir
-case "$TERM" in
-xterm*|rxvt*)
-    PS1="\[\e]0;\u@\h: \w\a\]$PS1"
-    ;;
-esac
-
 # ------------------------------- BASH SETTINGS --------------------------------
 # ----- options -----
 shopt -s globstar
 shopt -s histappend
 shopt -s checkwinsize
+set -o vi
 
 HISTCONTROL=ignoreboth
 HISTSIZE=5000
@@ -35,37 +31,55 @@ HISTFILE="$HOME/.cache/bash_history"
 # ----- Bash Completion -----
 if [ -f /usr/share/bash-completion/bash_completion ]
 then
-	source /usr/share/bash-completion/bash_completion
+    source /usr/share/bash-completion/bash_completion
 elif [ -f /etc/bash_completion ]
 then
-	source /etc/bash_completion
+    source /etc/bash_completion
 fi
 
 
-# -------------------------------- PROMPT ---------------------------------
-light_grey="\[\033[0;240m\]"
-PS1="\n ${light_grey}╭──\[\033[0;31m\]\[\033[0;37m\]\[\033[41m\]  \[\033[0m\]\[\033[0;31m\]${light_grey}─────\[\033[0;32m\]\[\033[0;30m\]\[\033[42m\]  \w \[\033[0m\]\[\033[0;32m\] \n ${light_grey}╰─\[\033[1;36m\]❯❯ \[\033[0m\]"
+# -------------------------- PROMPT -------------------------------- #
+# ╭──     ~/.dotfiles 
+# ╰─❯❯
+
+# ---- prompt colors ---- #
+light_grey="\033[1;38;5;244m"
+medium_dark_green="\033[1;38;5;83m"
+no_color="\033[0m"
+white="\033[0;37m"
+black="\033[0;30m"
+white_bg="\033[47m"
+green="\033[0;34m"
+# blue_bg="\033[27m"
+# blue_bg="\033[0;30m"
+blue_bg="\033[48;5;4m"
+
+
+PS1="\n ${light_grey}╭──${white}${black}${white_bg}  ${white}${blue_bg}   \w \
+${green} \n ${light_grey}╰─${medium_dark_green}❯❯ ${no_color}"
+# PS1="\n ${light_grey}╭──${white}${black}${white_bg}  ${black2}${blue_bg}${black2}  \w \
+# \[\033[0m\]\[\033[0;32m\] \n ${light_grey}╰─${prompt_char_color}❯❯ ${no_color}"
 
 glog() {
-	setterm -linewrap off
-
-	git --no-pager log --all --color=always --graph --abbrev-commit --decorate \
-	--format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' | \
-		sed -E \
-		-e 's/\|(\x1b\[[0-9;]*m)+\\(\x1b\[[0-9;]*m)+ /├\1─╮\2/' \
-		-e 's/(\x1b\[[0-9;]+m)\|\x1b\[m\1\/\x1b\[m /\1├─╯\x1b\[m/' \
-		-e 's/\|(\x1b\[[0-9;]*m)+\\(\x1b\[[0-9;]*m)+/├\1╮\2/' \
-		-e 's/(\x1b\[[0-9;]+m)\|\x1b\[m\1\/\x1b\[m/\1├╯\x1b\[m/' \
-		-e 's/╮(\x1b\[[0-9;]*m)+\\/╮\1╰╮/' \
-		-e 's/╯(\x1b\[[0-9;]*m)+\//╯\1╭╯/' \
-		-e 's/(\||\\)\x1b\[m   (\x1b\[[0-9;]*m)/╰╮\2/' \
-		-e 's/(\x1b\[[0-9;]*m)\\/\1╮/g' \
-		-e 's/(\x1b\[[0-9;]*m)\//\1╯/g' \
-		-e 's/^\*|(\x1b\[m )\*/\1⎬/g' \
-		-e 's/(\x1b\[[0-9;]*m)\|/\1│/g' \
-		| command less -r +'/[^/]HEAD'
-
-	setterm -linewrap on
+    setterm -linewrap off
+    
+    git --no-pager log --all --color=always --graph --abbrev-commit --decorate \
+    --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' | \
+    sed -E \
+    -e 's/\|(\x1b\[[0-9;]*m)+\\(\x1b\[[0-9;]*m)+ /├\1─╮\2/' \
+    -e 's/(\x1b\[[0-9;]+m)\|\x1b\[m\1\/\x1b\[m /\1├─╯\x1b\[m/' \
+    -e 's/\|(\x1b\[[0-9;]*m)+\\(\x1b\[[0-9;]*m)+/├\1╮\2/' \
+    -e 's/(\x1b\[[0-9;]+m)\|\x1b\[m\1\/\x1b\[m/\1├╯\x1b\[m/' \
+    -e 's/╮(\x1b\[[0-9;]*m)+\\/╮\1╰╮/' \
+    -e 's/╯(\x1b\[[0-9;]*m)+\//╯\1╭╯/' \
+    -e 's/(\||\\)\x1b\[m   (\x1b\[[0-9;]*m)/╰╮\2/' \
+    -e 's/(\x1b\[[0-9;]*m)\\/\1╮/g' \
+    -e 's/(\x1b\[[0-9;]*m)\//\1╯/g' \
+    -e 's/^\*|(\x1b\[m )\*/\1⎬/g' \
+    -e 's/(\x1b\[[0-9;]*m)\|/\1│/g' \
+    | command less -r +'/[^/]HEAD'
+    
+    setterm -linewrap on
 }
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
