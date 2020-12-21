@@ -54,8 +54,18 @@ green="\033[0;34m"
 # blue_bg="\033[0;30m"
 blue_bg="\033[48;5;4m"
 
+function get_folder_icon () {
+    if [[ $(pwd) == "$HOME" ]]; then
+        echo 
+    elif [[ $(stat -c "%U" $(pwd)) == $USER ]]; then
+        echo  
+    else
+        echo  
+    fi
+        
+}
 
-PS1="\n ${light_grey}╭──${white}${black}${white_bg}  ${white}${blue_bg}   \w \
+PS1="\n ${light_grey}╭──${white}${black}${white_bg}  ${white}${blue_bg} \$(get_folder_icon) \w \
 ${green} \n ${light_grey}╰─${medium_dark_green}❯❯ ${no_color}"
 # PS1="\n ${light_grey}╭──${white}${black}${white_bg}  ${black2}${blue_bg}${black2}  \w \
 # \[\033[0m\]\[\033[0;32m\] \n ${light_grey}╰─${prompt_char_color}❯❯ ${no_color}"
