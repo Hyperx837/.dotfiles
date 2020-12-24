@@ -1,5 +1,6 @@
 
 set -o vi
+bindkey -M vicmd v edit-command-line
 
 plugins=(git zsh-syntax-highlighting zsh-autosuggestions vi-mode fzf)
 
