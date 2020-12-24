@@ -1,17 +1,10 @@
 # enable terminal linewrap
 setterm -linewrap on
 source ~/.alias
+source ~/.docker-alias.sh
+
 alias refresh='source ~/.bashrc'
 
-# colorize man pages
-export LESS_TERMCAP_mb=$'\e[1;32m'
-export LESS_TERMCAP_md=$'\e[1;32m'
-export LESS_TERMCAP_me=$'\e[0m'
-export LESS_TERMCAP_se=$'\e[0m'
-export LESS_TERMCAP_so=$'\e[01;33m'
-export LESS_TERMCAP_ue=$'\e[0m'
-export LESS_TERMCAP_us=$'\e[1;4;31m'
-export LESSHISTFILE=-
 
 # colorize ls files
 [ -x /usr/bin/dircolors ] && eval "$(dircolors -b)"
@@ -39,19 +32,25 @@ fi
 
 
 # -------------------------- PROMPT -------------------------------- #
-# ╭──     ~/.dotfiles 
+# ╭──    ~ 
 # ╰─❯❯
+
+function run_before_prompt() {
+    # get_prompt_color
+    echo > /dev/null
+}
+
+PROMPT_COMMAND=run_before_prompt
 
 # ---- prompt colors ---- #
 light_grey="\033[1;38;5;244m"
 medium_dark_green="\033[1;38;5;83m"
+red="\033[0;31m"
 no_color="\033[0m"
 white="\033[0;37m"
 black="\033[0;30m"
 white_bg="\033[47m"
 green="\033[0;34m"
-# blue_bg="\033[27m"
-# blue_bg="\033[0;30m"
 blue_bg="\033[48;5;4m"
 
 function get_folder_icon () {
@@ -62,11 +61,20 @@ function get_folder_icon () {
     else
         echo  
     fi
-        
+}
+
+function get_prompt_color() {
+    if [[ $? -ne 0 ]]; then
+        echo ❯❯
+        prompt_char=$red
+    else
+        prompt_char=$medium_dark_green
+    fi
+    echo -e $prompt_char❯❯
 }
 
 PS1="\n ${light_grey}╭──${white}${black}${white_bg}  ${white}${blue_bg} \$(get_folder_icon) \w \
-${green} \n ${light_grey}╰─${medium_dark_green}❯❯ ${no_color}"
+${green} \n ${light_grey}╰─\$(get_prompt_color) ${no_color}"
 # PS1="\n ${light_grey}╭──${white}${black}${white_bg}  ${black2}${blue_bg}${black2}  \w \
 # \[\033[0m\]\[\033[0;32m\] \n ${light_grey}╰─${prompt_char_color}❯❯ ${no_color}"
 
@@ -97,3 +105,5 @@ glog() {
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+eval "$(starship init bash)"
