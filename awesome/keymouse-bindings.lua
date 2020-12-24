@@ -2,6 +2,8 @@ local awful = require("awful")
 local hotkeys_popup = require("awful.hotkeys_popup")
 local menubar = require("menubar")
 
+local altkey = 'Mod1'
+
 -- {{{ Mouse bindings
 awful.mouse.append_global_mousebindings(
     {
@@ -393,14 +395,9 @@ client.connect_signal(
     function()
         awful.keyboard.append_client_keybindings(
             {
-                awful.key(
-                    {modkey, "Shift"},
-                    "c",
-                    function(c)
-                        c:kill()
-                    end,
-                    {description = "close", group = "client"}
-                ),
+        awful.key({ altkey }, "F4",      function (c) c:kill() end,
+        {description = "close", group = "client"}),
+
                 awful.key(
                     {modkey, "Control"},
                     "space",
