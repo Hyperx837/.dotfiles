@@ -25,6 +25,14 @@ awful.mouse.append_global_mousebindings(
 awful.keyboard.append_global_keybindings(
     {
         awful.key(
+            {modkey, "Shift"},
+            "s",
+            function()
+                awful.spawn("flameshot gui")
+            end,
+            {description = "open screenshot program", group = "awesome"}
+        ),
+        awful.key(
             {modkey},
             "f",
             function()
