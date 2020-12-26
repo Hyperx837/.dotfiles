@@ -2,7 +2,7 @@
 set -o vi
 bindkey -M vicmd v edit-command-line
 
-plugins=(git zsh-syntax-highlighting zsh-autosuggestions vi-mode fzf)
+plugins=(git zsh-syntax-highlighting zsh-autosuggestions vi-mode fzf z)
 
 ifexist-source () {
     [[ -f $1 ]] && source $1
