@@ -3,6 +3,7 @@ alias search='yay -Ss'
 alias ka='killall'
 alias mute='pamixer -t'
 alias tor='sudo su - tor tor'
+alias nettest="timeout 2 wget -q --spider http://google.com"
 alias ref='exec zsh'
 alias cat='bat'
 alias less='bat'
@@ -85,14 +86,34 @@ alias actv='source .venv/bin/activate'
 alias deact='deactivate'
 alias venv='python -m venv'
 
+# TODO: color test
 
 
+# colors needed in functions
+green="\033[0;32m"
+yellow="\033[0;33m"
+blue="\033[0;34m"
+dark_yellow="\033[0;93m"
+purple="\033[38;5;93m"
+light_green="\033[38;5;043m"
 # things that requires arguments or one liners can't do
-
 
 # find any (almost) github user's email
 find-email () {
-    curl -fsSL -N https://api.github.com/users/$1/events/public | grep -m 1 "email"
+    nettest
+    if [[ $? -eq 0 ]]; then
+        email=$(curl -s -N https://api.github.com/users/$1/events/public | grep -Eio -m 1 '\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b')
+        if [[ $? -eq 0 ]]; then
+            echo -e "\n${light_green}Email Found 🎉🚀"
+            echo -e "${blue}$1${dark_yellow} ->  ${purple}$email"
+        else
+            echo -e "${dark_yellow}Username Not Found 😈🤬"
+        fi
+
+    else
+        echo -e "${yellow}You are offline 😡🥵"
+    fi
+    echo
 }
 
 volume () {
@@ -105,9 +126,9 @@ volume () {
 
 # network test
 nt () {
-    timeout 2 wget -q --spider http://google.com
+    nettest
     if [[ $? -eq 0 ]]; then
-        echo -e "\033[0;32mYou are online 🥳🎉"
+        echo -e "${green}You are online 🥳🎉"
     else
         echo -e "\033[0;33mYou are offline 😡🥵"
     fi
@@ -168,7 +189,7 @@ howto () {
 # find alias
 fa () {
     alias | grep "$*"
-    if [[ ! $? -eq 0 ]]; then
+    if [[ $? -ne 0 ]]; then
         echo 🥺 Not Found
     fi
 }
