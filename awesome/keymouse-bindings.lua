@@ -24,41 +24,35 @@ awful.mouse.append_global_mousebindings(
 -- General Awesome keys
 awful.keyboard.append_global_keybindings(
     {
-        awful.key(
-            {modkey, "Shift"},
-            "s",
+        awful.key({modkey, "Shift"}, "s",
             function()
                 awful.spawn("flameshot gui")
             end,
             {description = "open screenshot program", group = "awesome"}
         ),
         awful.key(
-            {modkey},
-            "f",
+            {modkey}, "f",
             function()
                 awful.spawn("thunar")
             end,
             {description = "launch file manager", group = "awesome"}
         ),
         awful.key(
-            {},
-            "XF86MonBrightnessUp",
+            {}, "XF86MonBrightnessUp",
             function()
                 awful.spawn("xbacklight -inc 10")
             end,
             {description = "increase brightness", group = "awesome"}
         ),
         awful.key(
-            {},
-            "XF86MonBrightnessDown",
+            {}, "XF86MonBrightnessDown",
             function()
                 awful.spawn("xbacklight -dec 10")
             end,
             {description = "decrease brightness", group = "awesome"}
         ),
         awful.key(
-            {},
-            "XF86AudioLowerVolume",
+            {}, "XF86AudioLowerVolume",
             function()
                 awful.spawn("pamixer -d 2")
             end,
