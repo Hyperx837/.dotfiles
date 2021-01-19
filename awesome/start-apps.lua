@@ -4,10 +4,9 @@ programs = {
     'nitrogen --restore', 
     'kitty', 
     -- 'code', 
-    -- 'firefox', 
+    'firefox', 
     -- 'thunar', 
     -- 'mailspring', 
-    -- 'flameshot',
     -- 'picom', 
     -- 'copyq'
 }
