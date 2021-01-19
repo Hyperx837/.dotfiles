@@ -6,6 +6,7 @@ alias tor='sudo su - tor tor'
 alias nettest="timeout 2 wget -q --spider http://google.com"
 alias ref='exec zsh'
 alias cat='bat'
+alias update-grub='sudo grub-mkconfig -o /boot/grub/grub.cfg'
 alias less='bat'
 alias colors='for i in {0..255}; do print -Pn "%K{$i}  \
  %k%F{$i}${(l:3::0:)i}%f " ${${(M)$((i%6)):#3}:+"\n"}; done'
@@ -24,7 +25,11 @@ alias vlc='bground vlc'
 alias qb='bground qutebrowser'
 
 # sudo musts
-alias sysct='sudo systemctl'
+alias systl='sudo systemctl'
+alias systart='sudo systemctl start'
+alias sysen='sudo systemctl enable'
+alias systop='sudo systemctl stop'
+alias sysdis='sudo systemctl disable'
 
 # drives
 alias mu='sudo mount'
@@ -47,7 +52,7 @@ alias ne='nmcli device wifi'
 alias ner='ne rescan && ne'
 alias nerst='sudo systemctl restart NetworkManager'
 alias nec='ne connect'
-alias my-ip="ifconfig wlp3s0 | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | \
+alias myip="ifconfig wlp3s0 | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | \
 grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'"
 
 
@@ -84,7 +89,9 @@ alias pyev='pyenv versions'
 alias pyeg='pyenv global'
 
 # python
-alias pip='pip --use-featur=2020-resolver'
+alias pi='pip install'
+alias pu='pip install --upgrade pip'
+alias pipr='pip install -r requirements.txt'
 alias actv='source .venv/bin/activate'
 alias deact='deactivate'
 alias venv='python -m venv'
@@ -138,6 +145,8 @@ nt () {
 }
 
 vim () {
+    # if file is an directory change working directory
+    [[ -d "$1" ]] && cd "$1"
     if [[ ! -e "$1" ]]; then
         # check_perm declares the file to check write permission 
         check_perm=$(dirname "$1") 
@@ -151,6 +160,9 @@ vim () {
     else
         sudo nvim $1
     fi
+    # if file was an directory change directory to orignal one
+    [[ -d "$1" ]] && cd -
+    return 0
 }
 
 # detach process from terminal
@@ -160,15 +172,27 @@ bground () {
 }
 
 # clone via http
+
+# clone via ssh 
+clone () {
+    url=$(echo "$*" | egrep -o 'https?://[^/]+')
+    # url_new="${url##https?://github.com/}"
+    # git clone github:$*
+    echo $url
+    URL_NOPRO=${URL:7}
+    URL_REL=${URL_NOPRO#*/}
+    # echo "/${URL_REL%%\?*}"
+
+# echo 'https://github.com/github/github' | 
+}
 clone () {
     cd ~/.tests/repos
     git clone $*
 }
 
-# clone via ssh 
-clone-ssh() {
+clone-ssh () {
     cd ~/.tests/repos
-    git clone github:$*
+    git clone github:$1
 }
 
 # take over a file that I didn't had access
@@ -217,3 +241,6 @@ txback () {
     fi
 }
 
+mov() {
+    mv $1 "`dirname $1`/$2"
+}
