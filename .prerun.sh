@@ -1,5 +1,5 @@
 clear 
-tmux
+# [[ "$TERM" != "xterm-256color" ]] && tmux
 neofetch | lolcat
 chpwd
-# cd $PROJECT
+
