@@ -39,4 +39,4 @@ source ~/.nvm/nvm.sh
 source ~/.nvm/bash_completion
 
 source ~/.cache/p10k-instant-prompt-${USER}.zsh
-
+source ~/.completions.zsh

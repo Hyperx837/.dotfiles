@@ -219,9 +219,9 @@ lh () {
 }
 
 
-# tv () {
-    # bground vlc ~/Videos/TV-Series/$1
-# }
+tv () {
+    bground vlc ~/Videos/TV-Series/$1
+}
 
 # get quick docs using the given command
 howto () {
