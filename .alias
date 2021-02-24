@@ -203,14 +203,14 @@ iown () {
     chmod +rw $1
 }
 
-# setup-py () {
-    # md $1
-    # cd $1
-    # python -m venv .venv
-    # pyenv local $2
-    # chpwd
-    # pip install autopep8 flake8
-# }
+setup-py () {
+    md $1
+    cd $1
+    python -m venv .venv
+    pyenv local $2
+    chpwd
+    pip install autopep8 flake8
+}
 
 # lh () {
     # cd $1
