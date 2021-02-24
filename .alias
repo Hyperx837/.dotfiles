@@ -3,7 +3,7 @@ alias search='yay -Ss'
 alias ka='killall'
 alias mute='pamixer -t'
 alias tor='sudo su - tor tor'
-alias nettest="timeout 2 wget -q --spider http://google.com"
+alias nettest="timeout 2 wget -q --spider http://youtube.com"
 alias ref='exec zsh'
 alias cat='bat'
 alias update-grub='sudo grub-mkconfig -o /boot/grub/grub.cfg'
@@ -17,7 +17,6 @@ alias update-packages='yay -Qqe > ~/.dotfiles/packages'
 alias upsys='yay -Syu'
 
 # files
-alias cp='rsync -Pasuv'
 alias rm='rm -rf'
 
 # background jobs (background function defined below)
@@ -43,7 +42,6 @@ alias add-fonts='mv *.[ot(wo)]tf ~/.local/share/fonts'
 
 # ls
 alias ls='lsd -F'
-alias lh='ls -ld .?* '
 alias tr='lsd --tree -I node_modules -I .git'
 alias tra='tr -Ah'
 
@@ -57,7 +55,7 @@ grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'"
 
 
 # git
-alias commit-count='git rev-list --count HEAD'
+alias cc='git rev-list --count HEAD'
 alias gs='git status -s'
 alias grh='git reset HEAD~'
 alias create-repo='gh repo create'
@@ -94,7 +92,6 @@ alias pu='pip install --upgrade pip'
 alias pipr='pip install -r requirements.txt'
 alias actv='source .venv/bin/activate'
 alias deact='deactivate'
-alias venv='python -m venv'
 
 # TODO: color test
 
@@ -125,6 +122,11 @@ find-email () {
     fi
     echo
 }
+
+# rn () {
+    # new_location=$(dirname $1)/$2
+    # mv $1 $new_location
+# }
 
 volume () {
     if [[ -n $1  ]]; then
@@ -201,6 +203,25 @@ iown () {
     chmod +rw $1
 }
 
+# setup-py () {
+    # md $1
+    # cd $1
+    # python -m venv .venv
+    # pyenv local $2
+    # chpwd
+    # pip install autopep8 flake8
+# }
+
+# lh () {
+    # cd $1
+    # ls -ld .?*
+    # cd -
+# }
+
+
+# tv () {
+    # bground vlc ~/Videos/TV-Series/$1
+# }
 
 # get quick docs using the given command
 howto () {
@@ -233,6 +254,24 @@ dkcud () {
 
 }
 
+# cp () {
+    # if [[ $2 == *"`lsblk`" ]]; then
+        # echo true
+    # else
+        # echo false
+    # fi
+# }
+# code () {
+    # if [[ $1 == "." ]]; then
+        # music
+    # fi
+    # /usr/bin/code $*
+# }
+
+# music () {
+    # vlc ~/Music --random
+# }
+
 txback () {
     if [[ $(xbacklight) == "100.000000" ]]; then
         xbacklight -set 1
@@ -241,6 +280,16 @@ txback () {
     fi
 }
 
+# python () {
+    # if [[ "$*" ]]; then 
+        # python $*
+    
+    # else 
+        # ptpython
+    # fi
+# }
+
 mov() {
     mv $1 "`dirname $1`/$2"
 }
+
