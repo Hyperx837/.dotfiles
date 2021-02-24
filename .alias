@@ -280,14 +280,14 @@ txback () {
     fi
 }
 
-# python () {
-    # if [[ "$*" ]]; then 
-        # python $*
+python () {
+    if [[ -n "$*" ]]; then 
+        /usr/bin/env python $*
     
-    # else 
-        # ptpython
-    # fi
-# }
+    else 
+        ptpython
+    fi
+}
 
 mov() {
     mv $1 "`dirname $1`/$2"
