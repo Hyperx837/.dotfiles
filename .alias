@@ -255,7 +255,7 @@ dkcud () {
 }
 
 # cp () {
-    # if [[ $2 == *"`lsblk`" ]]; then
+    # if [[ *"`lsblk`"* == $2 ]]; then
         # echo true
     # else
         # echo false
@@ -268,9 +268,9 @@ dkcud () {
     # /usr/bin/code $*
 # }
 
-# music () {
-    # vlc ~/Music --random
-# }
+music () {
+    vlc ~/Music --random
+}
 
 txback () {
     if [[ $(xbacklight) == "100.000000" ]]; then
