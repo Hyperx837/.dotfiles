@@ -212,11 +212,11 @@ setup-py () {
     pip install autopep8 flake8
 }
 
-# lh () {
-    # cd $1
-    # ls -ld .?*
-    # cd -
-# }
+lh () {
+    cd $1
+    ls -ld .?*
+    cd -
+}
 
 
 # tv () {
