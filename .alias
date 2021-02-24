@@ -123,10 +123,10 @@ find-email () {
     echo
 }
 
-# rn () {
-    # new_location=$(dirname $1)/$2
-    # mv $1 $new_location
-# }
+rn () {
+    new_location=$(dirname $1)/$2
+    mv $1 $new_location
+}
 
 volume () {
     if [[ -n $1  ]]; then
