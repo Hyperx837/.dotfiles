@@ -261,12 +261,12 @@ dkcud () {
         # echo false
     # fi
 # }
-# code () {
-    # if [[ $1 == "." ]]; then
-        # music
-    # fi
-    # /usr/bin/code $*
-# }
+code () {
+    if [[ -d "$1" ]]; then
+        music
+    fi
+    /usr/bin/code $*
+}
 
 music () {
     vlc ~/Music --random
