@@ -259,6 +259,11 @@ setup-py () {
 }
 
 lh () {
+    if [[ $1 == "" ]]; then
+        dir = "."
+    else
+        dir = $1
+    fi
     cd $1
     ls -ld .?*
     cd -
@@ -371,3 +376,7 @@ txback () {
     # fi
 # }
 
+prompt () {
+    ln -sf ~/.dotfiles/p10k/$1.zsh ~/.p10k.zsh
+    ref
+}
