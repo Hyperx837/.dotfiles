@@ -26,7 +26,7 @@ create_github_repo () {
     fi
 
 }
-print_and_run_command npx create-react-app $project #  create react app named project
+print_and_run_command npx create-react-app $project --typescript #  create react app named project
 print_and_run_command cd $project # cd into project
 print_and_run_command cp -r $HOME/.srp/react-project-files/* ./ # copy global config files into the current directory
 print_and_run_command docker-compose up -d # bring up the docker container without blocking the main thread but show the output of it
@@ -47,7 +47,7 @@ print_and_run_command echo "yarn start" > docker-entrypoint.sh
 print_and_run_command rm src/App.css fix_imports.py
 print_and_run_command git status -s
 print_and_run_command git add . 
-print_and_run_command git commit -m "\"initial commit 🚀\""
+print_and_run_command git commit -m initial\ commit\ 🚀
 
 create_github_repo
 print_and_run_command docker attach "${project}_react-app_1"
