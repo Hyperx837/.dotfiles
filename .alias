@@ -373,11 +373,13 @@ txback () {
 # }
 
 prompt () {
-    if [[ -n "$1" ]]; then
-        ln -sf ~/.dotfiles/p10k/$1.zsh ~/.p10k.zsh
+    config_path="$HOME/.dotfiles/p10k/$1.zsh"
+    if [[ $* == *--temp* ]]; then
+        source "$config_path"
+    elif [[ -n "$1" ]]; then
+        ln -sf $config_path ~/.p10k.zsh
         ref
     else
         echo `basename $(readlink -f ~/.p10k.zsh)`
-        
     fi
 }
