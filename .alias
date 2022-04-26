@@ -195,41 +195,10 @@ bground () {
     disown
 }
 
-# clone via ssh 
-clone () {
-    url=$(echo "$*" | egrep -o 'https?://[^/]+')
-    # url_new="${url##https?://github.com/}"
-    # git clone github:$*
-    echo $url
-    URL_NOPRO=${URL:7}
-    URL_REL=${URL_NOPRO#*/}
-    # echo "/${URL_REL%%\?*}"
-
-# echo 'https://github.com/github/github' | 
-}
-
-# is_url () {
-    # if [[ $1 =~ ^(https?|git):// ]]; then
-        # echo 1
-    # else
-        # echo 0
-    # fi
-# }
 
 clone () {
-    # match capital or simple letters
-    # if [[is_url $1]]; then
-        # url = $1
-    # else if [[ $1 =~ ^[a-zA-Z]$ ]]; then
-        # url = github:$1
-    # fi
-
-    # echo $url
-    # cd ~/.tests/repos
-    # git clone $*
-    # # get the name of the repo
-
-    # repo_name=$(echo $* | sed 's/.*\///')
+    cd ~/.tests/repos
+    git clone $*
 }
 
 clone-ssh () {
@@ -324,15 +293,6 @@ figfonts () {
     showfigfonts $1 | less
 }
 
-# cp () {
-    # if ls /dev/sd[c-z]; then
-        
-    # # if [[ *"`lsblk`"* == $2 ]]; then
-        # # echo true
-    # # else
-        # # echo false
-    # # fi
-# }
 code () {
     if [[ -d "$1" ]]; then
         music
