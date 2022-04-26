@@ -48,7 +48,6 @@ alias lsb='lsblk'
 
 # fonts
 alias fonts='kitty + list-fonts --psnames'
-alias add-fonts=''
 
 # ls
 alias ls='lsd -F'
@@ -276,13 +275,6 @@ tv () {
 
 # get quick docs using the given command
 howto () {
-    # basedir="$HOME/.howto"
-    # fpath="$basedir/$1"
-    # if [[ ! -d $basedir ]]; then
-        # mkdir $basedir   
-    # fi
-    # if [[ -f $fpath ]]; then
-        # cat $fpath
     wget -q --spider "https://google.com"
     if [ $? -eq 0 ]; then
         curl -fsSL cheat.sh/$1 | less
@@ -320,12 +312,16 @@ mergevid() {
     echo $out
 }
 
-add-fonts () {
+add-fonts() {
     cd $1
     mv *.[ot(wo)]tf ~/.local/share/fonts
     bground fc-cache -v
     cd -
     
+}
+
+figfonts () {
+    showfigfonts $1 | less
 }
 
 # cp () {
@@ -377,6 +373,11 @@ txback () {
 # }
 
 prompt () {
-    ln -sf ~/.dotfiles/p10k/$1.zsh ~/.p10k.zsh
-    ref
+    if [[ -n "$1" ]]; then
+        ln -sf ~/.dotfiles/p10k/$1.zsh ~/.p10k.zsh
+        ref
+    else
+        echo `basename $(readlink -f ~/.p10k.zsh)`
+        
+    fi
 }
