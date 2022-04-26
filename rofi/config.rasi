@@ -1,0 +1,39 @@
+configuration {
+    font: "Montserrat SemiBold 12";
+    location: 1;
+    show-icons: true;
+    display-drun: "      ";
+    drun-display-format: "{name}";
+    theme: "gruvbox-dark-soft";
+    lines: 7;
+    columns: 3;
+}
+
+window {
+    width: 30%;
+    height: 100%;
+}
+
+element {
+    orientation: vertical;
+    padding: 10; 
+    margin: 10px;
+}
+
+entry {
+    font: "NotoSans SemiBold 12";
+    placeholder-color: #999;
+    placeholder: "Search Apps";
+    blink: true;
+}
+
+element-icon {
+    size: 9%;
+}
+
+element-text {
+    horizontal-align: 0.5;
+    vertical-align: 0.5;
+}
+
+/* @import "clean.rasi" */
