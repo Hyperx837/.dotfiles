@@ -1,5 +1,9 @@
 clear 
-# [[ "$TERM" != "xterm-256color" ]] && tmux
-neofetch | lolcat
+nf_options=""
+if [[ $TERM != "kitty" ]]; then
+    nf_options="--ascii"
+fi
+neofetch $nf_options | lolcat
+
 chpwd
 
