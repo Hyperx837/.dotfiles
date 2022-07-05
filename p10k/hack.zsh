@@ -78,7 +78,6 @@
     taskwarrior             # taskwarrior task count (https://taskwarrior.org/)
     time                    # current time
     # =========================[ Line #2 ]=========================
-    newline
   )
 
   # Defines character set used by powerlevel10k. It's best to let `p10k configure` set it for you.
