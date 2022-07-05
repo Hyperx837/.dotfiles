@@ -1,4 +1,3 @@
-
 set -o vi
 bindkey -M vicmd v edit-command-line
 
@@ -40,12 +39,13 @@ source $ZSH/oh-my-zsh.sh
 source ~/.nvm/nvm.sh
 source ~/.nvm/bash_completion
 
-files=(.alias .completions.zsh .docker-alias.sh .fzf.zsh ~/.cache/p10k-instant-prompt-${USER}.zsh)
+files=(.alias .completions.zsh .docker-alias.sh .fzf.zsh .cache/p10k-instant-prompt-${USER}.zsh)
 for file in ${files[@]}; do
-    ifexist-source $file
+    ifexist-source $HOME/$file
 done
 
 
 
 eval "$(pyenv init --path)" 
 eval "$(pyenv init -)" 
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
