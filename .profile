@@ -4,7 +4,8 @@ PATH="$PATH:$HOME/.local/bin"
 music
 # vlc-ctrl
 picom &
-firefox &
+firefox-developer-edition &
+whatsapp &
 kitty &
 light-locker &
 discord &
