@@ -5,6 +5,8 @@ acpid
 adobe-source-han-sans-otc-fonts
 alsa-utils
 anbox-git
+anbox-modules-dkms
+android-tools
 asp
 audio-recorder
 autoconf
@@ -62,6 +64,7 @@ firefox-developer-edition
 flac
 flameshot-git
 flex
+fontforge
 fortune-mod
 fragments
 fzf
@@ -124,6 +127,7 @@ lolcat
 lsd-git
 lua
 luit
+lzip
 m4
 maim
 make
@@ -131,6 +135,7 @@ man-db
 mc
 mesa-demos
 metasploit
+microsoft-edge-dev-bin
 mkinitcpio
 mlocate
 mongodb-bin
@@ -197,6 +202,7 @@ perl-xml-parser
 perl-yaml-tiny
 pico-tts
 picom-ibhagwan-git
+pipes.sh
 pkgconf
 playerctl
 po4a
@@ -249,7 +255,7 @@ python-yaml
 python-zipp
 python-zope-interface
 python2-distutils-extra
-qutebrowser-git
+qutebrowser
 ranger
 redshift
 reflector
@@ -262,6 +268,7 @@ rust
 sed
 silver-searcher-git
 sox
+squashfs-tools
 subdl
 subdownloader
 sudo
@@ -367,6 +374,8 @@ xorg-xwud
 xvidcore
 yarn
 yay-git
+zathura
+zathura-pdf-poppler
 zoom
 zsh
 zsh-theme-powerlevel10k-git
